@@ -1,0 +1,5 @@
+- [x] credentials file must be 0400
+- [x] should we have stage_number stage_name so tools can sort by stage_number?
+- [x] Add hostname
+- [ ] Could we include something to record queue times? (i.e. from submit to execute?)
+- [ ] Do we need to stop the command-line hanging with a timeout?
