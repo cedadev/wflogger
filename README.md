@@ -31,3 +31,43 @@ From the command-line:
 
 ```
 ```
+
+### Running on JASMIN
+
+Assuming you have your credentials file set up correctly, you can log 
+each event with the following command-line script:
+
+```
+/apps/jasmin/community/wflogger/wflog
+```
+
+The `help` information shows which options are required:
+
+```
+$ /apps/jasmin/community/wflogger/wflog --help
+Usage: wflogger log [OPTIONS] WORKFLOW TAG STAGE_NUMBER STAGE ITERATION
+
+Options:
+  -d, --date-time TEXT
+  -c, --comment TEXT
+  -f, --flag INTEGER
+  --help                Show this message and exit.
+
+```
+
+A typical example would be to run with the following inputs:
+- workflow: `my-sat-processor`
+- tag: `v1.0`
+- stage_number: `1`
+- stage: `start`
+- iteration: `1`
+
+The command-line incantation to run this would be:
+
+```
+/apps/jasmin/community/wflogger/wflog my-sat-processor v1.0 1 start 1
+```
+
+(No output is shown if the script runs successfully.)
+
+
