@@ -2,8 +2,9 @@ import os
 
 env = os.environ
 
-creds_file = os.path.join(env["HOME"], ".wflogger")
-user_id = env["USER"]
+HOME = env["HOME"]
+creds_file = os.path.join(HOME, ".wflogger")
+user_id = env.get("USER") or os.path.basename(HOME)
 hostname = env["HOSTNAME"]
 
 if not os.path.isfile(creds_file):
