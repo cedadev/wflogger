@@ -66,6 +66,10 @@ def add_duration_column(df, sort_by=None):
     return pd.DataFrame(new_rows, columns=list(df.columns) + ["duration"]).reset_index(drop=True)
 
 
+def get_stage_numbers(df):
+    return sorted(df.stage_number.unique())
+
+
 def get_stage_labels(df):
     stages = []
     
@@ -86,12 +90,15 @@ def plot_stage_durations_by_iteration(df):
     fig, ax = plt.subplots(figsize=(9, 6))
 
     for key, grp in df.groupby(['iteration']):
-        ax.plot(grp['stage'], grp['duration'], label=key)
+        ax.scatter(grp['stage'], grp['duration'], label=key)
 
     #ax.legend()
     ax.set_ylabel("Duration (s)")
     ax.set_xlabel("Stage")
-    ax.set_xticklabels(get_stage_labels(df))
+
+    stage_labels = get_stage_labels(df)
+    ax.set_xticks(range(len(stage_labels)))
+    ax.set_xticklabels(stage_labels)
     
     r1 = df.iloc[0]
     plt.title(f"{r1.workflow} - {r1.tag} - Iteration durations per stage")
@@ -104,7 +111,6 @@ def plot_comparison_of_two_workflow_tags(df1, df2, stat="mean", yscale="linear")
     grp_2 = df2.groupby("stage")
 
     max_duration = max(grp_1["duration"].max())
-    print(max_duration)
     stages = get_stage_labels(df1)
     durations = stages
 
