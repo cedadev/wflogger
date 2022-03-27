@@ -26,7 +26,7 @@ def get_results(workflow, tag=None, stage_number=None, stage=None, iteration=Non
                 hostname=None, comment="", flag=DEFAULT_FLAG):
     creds_dict = dict([item.split("=") for item in creds.split()])
 
-    pg_url = "postgresql://{dbname}:{password}@{host}:{port}/{dbname}" \
+    pg_url = "postgresql://{user}:{password}@{host}:{port}/{dbname}" \
              .format(**creds_dict)
 
     query = _get_select_statement(workflow, tag=tag, stage_number=stage_number, stage=stage, iteration=iteration,
