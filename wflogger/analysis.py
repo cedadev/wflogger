@@ -101,7 +101,7 @@ def plot_stage_durations_by_iteration(df):
     ax.set_xticklabels(stage_labels)
     
     r1 = df.iloc[0]
-    plt.title(f"{r1.workflow} - {r1.tag} - Iteration durations per stage")
+    plt.title(f"{r1.workflow}: {r1.tag} - Iteration durations per stage")
     plt.show()
 
 
@@ -111,18 +111,21 @@ def plot_comparison_of_two_workflow_tags(df1, df2, stat="mean", yscale="linear")
     grp_2 = df2.groupby("stage")
 
     max_duration = max(grp_1["duration"].max())
-    stages = get_stage_labels(df1)
-    durations = stages
+    stage_labels = get_stage_labels(df1)
 
     r1 = df1.iloc[0]
     r2 = df2.iloc[0]
     
-    ax.scatter(durations, grp_1["duration"].agg(stat), label=f"{r1.workflow}: {r1.tag}")
-    ax.scatter(durations, grp_2["duration"].agg(stat), label=f"{r2.workflow}: {r2.tag}")
+    ax.scatter(stage_labels, grp_1["duration"].agg(stat), label=f"{r1.workflow}: {r1.tag}")
+    ax.scatter(stage_labels, grp_2["duration"].agg(stat), label=f"{r2.workflow}: {r2.tag}")
+
+    n = len(stage_labels)
+    ax.set_xticks(range(1, n+1))
+    ax.set_xticklabels(stage_labels)
     ax.legend()
     
     plt.title(f"Comparing '{stat}' stage durations between: {r1.workflow}:" 
-              f"{r1.tag} and {r2.tag}")
+              f"{r1.tag} VS {r2.tag}")
     plt.yscale(yscale)
               
     ax.set_ylabel("Duration (s)")

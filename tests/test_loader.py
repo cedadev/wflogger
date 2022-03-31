@@ -7,12 +7,12 @@ import psycopg2
 from wflogger.credentials import user_id, hostname, creds
 from wflogger.wflogger import INSERT_SQL
 
-v_1 = {"workflow": "my-model-1",
+v_1 = {"workflow": "my-model-2",
        "tag": "idl-version",
-       "stages": [(1, "start", 0), (2, "read", 3), (3, "process", 10), (4, "summarise", 4)],
+       "stages": [(1, "start", 0), (2, "read", 15), (3, "process", 30), (4, "summarise", 12)],
        "n_iterations": 200}
 
-v_2 = {"workflow": "my-model-1",
+v_2 = {"workflow": "my-model-2",
        "tag": "python-version",
        "stages": [(1, "start", 0), (2, "read", 8), (3, "process", 12), (4, "summarise", 2)],
        "n_iterations": 300}
