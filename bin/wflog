@@ -1,0 +1,5 @@
+#!/bin/bash
+
+dr=$(dirname $0)
+timeout 3 ${dr}/wrap_wflogger $@
+

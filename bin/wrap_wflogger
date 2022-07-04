@@ -1,0 +1,8 @@
+#!/bin/bash
+
+workdir=/apps/jasmin/community/wflogger
+cd $workdir/
+
+source venv/bin/activate
+wflogger log $@
+

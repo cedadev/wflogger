@@ -8,14 +8,18 @@ CREATE_TABLE_SQL = """CREATE TABLE workflow_logs (
   id            serial PRIMARY KEY,
   user_id       varchar(32) NOT NULL,
   hostname      varchar(64) NOT NULL,
+  partition     varchar(32), 
   workflow      varchar(64) NOT NULL,
   tag           varchar(64) NOT NULL,
+  job_id        integer,
+  task_id       integer, 
+  task_count    integer,
   stage_number  integer NOT NULL,
   stage         varchar(64) NOT NULL,
   iteration     integer DEFAULT 0,
   date_time     timestamp DEFAULT current_timestamp,
   comment       varchar(128) DEFAULT '',
-  flag          integer DEFAULT -999
+  flag          integer
 );"""
 
 DROP_TABLE_SQL = "DROP TABLE workflow_logs;"
