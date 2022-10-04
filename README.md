@@ -24,12 +24,12 @@ python setup.py develop
 
 ## How it works
 
-
 ### Command-line
 
 From the command-line:
 
 ```
+wflog my-sat-processor v1.0 1 start 1
 ```
 
 ### Running on JASMIN
