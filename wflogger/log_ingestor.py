@@ -24,9 +24,9 @@ python log_ingestor.py --sqlite-path test.db --setup /tmp/test1/b/*.log
 
 Log line format:
 
-Log lines that contain the token WFL_START will be interepreted as | delimited workflow log entries after the token:
+Log lines that contain the token WFL_START will be interpreted as | delimited workflow log entries after the token:
 
-... WFL_ENTRY <user_id> | <hostname> | <workflow> | <tag> | <stage_number> | <stage> | <iteration> | <date_time> | <flag> | <comment>
+... WFL_START <user_id> | <hostname> | <workflow> | <tag> | <stage_number> | <stage> | <iteration> | <date_time> | <comment> | <flag>
 
 where:
     <user_id> is a string username (32 chars max)
